@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="https://code.jquery.com/jquery-3.0.0.js"
+        integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo="
+        crossorigin="anonymous">
+
+</script>
+<div id="about" style=" height: 150px; width: 300px; background-color: lightgreen; text-align: center; padding: 10px; border-bottom: 5px; margin-bottom: 5px"></div>
+<button type="button" id="show" style="border-spacing:5px">show</button>
+<button type="button" id="hide">hide</button>
+<button type="button" id="toggle">toggle</button>
+<button type="button" id="getjson">getjson</button>
+<button type="button" id="getgame">get game</button>
+
+
+<input type="text" class="power" value="" />
+<script>
+    $(document).ready(function () {
+        $('#about').click(function () {
+
+            if ($(this).html() === 'clicked') {
+                $(this).html('clicked again');
+            }
+            else {
+                $(this).html('clicked');
+            }
+        });
+
+        $('#about').hover(function () {
+            $(this).css('background-color', 'lightblue');
+        });
+
+        $('#about').mouseleave(function () {
+            $(this).css('background-color', 'lightgreen');
+        });
+
+        $('#show').click(function () {
+            $('#about').show();
+        });
+
+        $('#hide').click(function () {
+            $('#about').hide();
+        });
+        $('#toggle').click(function () {
+            $('#about').toggle();
+        });
+        $('.power').keyup(function () {
+            $('#about').html($(this).val());
+        });
+        $('#getjson').click(function () {
+            $.ajax({
+                url: 'games.json', success: function (result) {
+                    $('#about').html(JSON.stringify(result, null, 4));
+                }
+            });
+        });
+        $('#getgame').click(function () {
+            $.ajax({
+                url: 'games.json', success: function (result) {
+                    var game = result.games[0].title;
+                    $('#about').html(game);
+                }
+            });
+        });
+    });
+</script>
+<script>src = "https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>

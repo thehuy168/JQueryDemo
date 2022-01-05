@@ -1,0 +1,20 @@
+{
+  "games" :
+  [
+    {
+      "title": "a",
+      "genre": "a",
+      "dep": "a",
+        "other": "1"
+    },
+
+    {
+      "title": "b",
+      "genre": "b",
+      "dep": "b",
+      "other": "2"
+    }
+
+  ]
+
+}
